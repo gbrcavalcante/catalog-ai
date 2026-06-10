@@ -5,6 +5,9 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { DataTableColumnHeader } from "./data-table-column-header";
 import { formatBRL } from "@/utils/format-brl";
 import { DataTableColumnActions } from "./data-table-column-actions";
+import { CheckCircle2Icon, XCircleIcon } from "lucide-react";
+import { Badge } from "./ui/badge";
+import { ProductStatusBadge } from "./product-status-badge";
 
 export const columns: ColumnDef<Product>[] = [
   {
@@ -80,7 +83,11 @@ export const columns: ColumnDef<Product>[] = [
     header: ({ column }) => (
       <DataTableColumnHeader column={column} title="Status" />
     ),
-    cell: ({ row }) => <div>{row.getValue("active") ? "Yes" : "No"}</div>,
+    cell: ({ row }) => {
+      const active = row.getValue("active") as boolean;
+
+      return <ProductStatusBadge active={active} />;
+    },
   },
   {
     id: "actions",
