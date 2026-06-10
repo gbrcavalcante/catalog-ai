@@ -4,6 +4,7 @@ import { QueryClientProvider } from "@tanstack/react-query";
 import { queryClient } from "@/lib/query-client";
 import { ThemeProvider } from "@/components/theme-provider";
 import { TooltipProvider } from "@/components/ui/tooltip";
+import { Toaster } from "@/components/ui/sonner";
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
       <ThemeProvider storageKey="catalog-ai-theme">
         <TooltipProvider>
           <RouterProvider router={router} />
+          <Toaster position="top-right" />
         </TooltipProvider>
       </ThemeProvider>
     </QueryClientProvider>
