@@ -6,6 +6,7 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { DataTableColumnHeader } from "@/components/data-table-column-header";
 import { DataTableColumnActions } from "@/components/data-table-column-actions";
 import { ProductStatusBadge } from "@/components/product-status-badge";
+import { ProductImageDialog } from "@/components/product-image-dialog";
 
 export const columns: ColumnDef<Product>[] = [
   {
@@ -34,20 +35,12 @@ export const columns: ColumnDef<Product>[] = [
     accessorKey: "images",
     header: () => <span className="text-[0.8rem]">Imagem</span>,
     cell: ({ row }) => {
-      const images = row.getValue("images") as string[];
+      const { images, title } = row.original;
       const imageUrl = images[0];
 
       return (
         <div className="flex items-center gap-2">
-          {imageUrl ? (
-            <img
-              src={imageUrl}
-              alt="Product Image"
-              className="h-10 w-10 rounded-md object-cover"
-            />
-          ) : (
-            <div className="h-10 w-10 rounded-md bg-muted" />
-          )}
+          <ProductImageDialog src={imageUrl} alt={title} />
         </div>
       );
     },
