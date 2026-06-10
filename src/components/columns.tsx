@@ -1,13 +1,11 @@
 import { type ColumnDef } from "@tanstack/react-table";
 import { type Product } from "@/types/product.type";
+import { formatBRL } from "@/utils/format-brl";
 
 import { Checkbox } from "@/components/ui/checkbox";
-import { DataTableColumnHeader } from "./data-table-column-header";
-import { formatBRL } from "@/utils/format-brl";
-import { DataTableColumnActions } from "./data-table-column-actions";
-import { CheckCircle2Icon, XCircleIcon } from "lucide-react";
-import { Badge } from "./ui/badge";
-import { ProductStatusBadge } from "./product-status-badge";
+import { DataTableColumnHeader } from "@/components/data-table-column-header";
+import { DataTableColumnActions } from "@/components/data-table-column-actions";
+import { ProductStatusBadge } from "@/components/product-status-badge";
 
 export const columns: ColumnDef<Product>[] = [
   {
